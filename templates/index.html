@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Home | Arvind Panday Food and Catering Services{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="eyebrow"><i class="fa-solid fa-star me-2"></i> FOOD • HOSPITALITY • CELEBRATIONS</span>
+    <h1>Exceptional food.<br><em>Memorable celebrations.</em></h1>
+    <p>Thoughtfully planned catering for weddings, corporate gatherings, family celebrations, and special occasions.</p>
+    <div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-gold btn-lg" href="{{ url_for('contact') }}">Plan Your Event <i class="fa-solid fa-arrow-right ms-2"></i></a><a class="btn btn-outline-light btn-lg" href="{{ url_for('services') }}">Explore Services</a></div>
+  </div>
+  <div class="hero-note"><span>MADE FOR YOUR MOMENTS</span><i class="fa-solid fa-leaf"></i></div>
+</section>
+<section class="section-pad container">
+  <div class="section-heading text-center"><span class="eyebrow">A WARM WELCOME</span><h2>Good food brings people together.</h2><p>From intimate gatherings to large celebrations, we help you plan a catering experience around your occasion.</p></div>
+  <div class="row g-4 mt-3">
+    {% for item in services %}
+    <div class="col-md-6 col-lg-4"><article class="service-card h-100"><div class="service-icon"><i class="fa-solid fa-utensils"></i></div><h3>{{ item.title }}</h3><p>{{ item.description }}</p><a href="{{ url_for('contact') }}" class="text-link">Request a quote <i class="fa-solid fa-arrow-right ms-1"></i></a></article></div>
+    {% else %}
+    <div class="col-12"><div class="empty-state">Service information will be published here soon.</div></div>
+    {% endfor %}
+  </div>
+</section>
+<section class="story-band"><div class="container row align-items-center g-4 mx-auto"><div class="col-lg-6"><span class="eyebrow">OUR APPROACH</span><h2>Every event deserves thoughtful details.</h2><p>We work with you to understand your guest count, event style, menu preferences, and venue needs before preparing a tailored proposal.</p><a class="btn btn-light" href="{{ url_for('about') }}">Discover Our Story</a></div><div class="col-lg-6"><div class="story-highlight"><i class="fa-solid fa-bowl-food"></i><h3>Made around your occasion</h3><p>Menus and service plans can be discussed directly with our team.</p></div></div></div></section>
+<section class="section-pad container">
+  <div class="section-heading text-center"><span class="eyebrow">OUR LOCATIONS</span><h2>Find your nearest branch</h2><p>Branch details will be updated as locations are confirmed.</p></div>
+  <div class="row g-3 mt-3">{% for branch in branches %}<div class="col-md-4"><div class="branch-card h-100"><i class="fa-solid fa-location-dot"></i><h3>{{ branch.name }}</h3><p>{{ branch.address }}, {{ branch.city }}</p><p class="small">{{ branch.phone }}</p></div></div>{% else %}<div class="col-12"><div class="empty-state">Branch information is being prepared.</div></div>{% endfor %}</div>
+  <div class="text-center mt-4"><a class="text-link" href="{{ url_for('branches') }}">View all branches <i class="fa-solid fa-arrow-right ms-1"></i></a></div>
+</section>
+<section class="cta-band container mb-5"><div><span class="eyebrow">LET'S PLAN SOMETHING SPECIAL</span><h2>Tell us about your event.</h2><p>Share a few details and request a catering quotation.</p></div><a class="btn btn-gold btn-lg" href="{{ url_for('contact') }}">Make an Enquiry <i class="fa-solid fa-arrow-right ms-2"></i></a></section>
+{% endblock %}

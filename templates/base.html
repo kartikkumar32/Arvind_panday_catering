@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Arvind Panday Food and Catering Services. Catering for weddings, corporate events, parties, and celebrations.">
+  <title>{% block title %}Arvind Panday Food and Catering Services{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg container py-3">
+    <a class="navbar-brand brand-lockup" href="{{ url_for('home') }}">
+      <span class="brand-mark"><i class="fa-solid fa-utensils"></i></span>
+      <span><strong>ARVIND PANDAY</strong><small>FOOD & CATERING SERVICES</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('certifications') }}">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('services') }}">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('branches') }}">Branches</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('team') }}">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-gold btn-sm" href="{{ url_for('contact') }}">Request a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}<div class="container mt-3">{% for category, message in messages %}<div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">{{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>{% endfor %}</div>{% endif %}
+{% endwith %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="site-footer mt-5">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-lg-5"><div class="brand-lockup footer-brand"><span class="brand-mark"><i class="fa-solid fa-utensils"></i></span><span><strong>ARVIND PANDAY</strong><small>FOOD & CATERING SERVICES</small></span></div><p class="footer-copy mt-3">Thoughtful food and catering for meaningful gatherings. Contact us to discuss your event and menu requirements.</p></div>
+      <div class="col-6 col-lg-3"><h6>Explore</h6><a href="{{ url_for('about') }}">About</a><a href="{{ url_for('services') }}">Services</a><a href="{{ url_for('branches') }}">Branches</a><a href="{{ url_for('team') }}">Our Team</a></div>
+      <div class="col-6 col-lg-4"><h6>Contact</h6><p>{{ site_settings.get('business_phone') or 'Phone: to be provided' }}</p><p>{{ site_settings.get('business_email') or 'Email: to be provided' }}</p><p>{{ site_settings.get('business_address') or 'Address: to be provided' }}</p><a href="{{ url_for('contact') }}">Send an enquiry <i class="fa-solid fa-arrow-right ms-1"></i></a></div>
+    </div>
+    <div class="footer-bottom mt-4 pt-3"><span>© {{ current_year }} Arvind Panday Food and Catering Services</span><a href="{{ url_for('admin_login') }}">Admin login</a></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body></html>
