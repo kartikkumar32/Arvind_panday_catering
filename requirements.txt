@@ -5,3 +5,4 @@ Flask-WTF
 Flask-Limiter
 email-validator
 python-dotenv
+gunicorn
