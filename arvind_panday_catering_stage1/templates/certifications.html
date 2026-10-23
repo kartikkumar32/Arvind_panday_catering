@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Certifications | Arvind Panday Catering{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">DOCUMENTATION</span><h1>Certifications</h1><p>Business registrations and compliance documents, where applicable.</p></div></section>
+<section class="container section-pad"><div class="notice-panel mb-4"><i class="fa-solid fa-shield-halved me-2"></i> Only verified documents and current details should be published. No certification is claimed by this starter site.</div><div class="row g-4">{% for cert in certifications %}<div class="col-md-6 col-lg-4"><div class="service-card h-100"><div class="service-icon"><i class="fa-solid fa-file-certificate"></i></div><h3>{{ cert.title }}</h3><p><strong>Issuer:</strong> {{ cert.issuer }}</p><p><strong>Number:</strong> {{ cert.certificate_number }}</p><p><strong>Validity:</strong> {{ cert.validity }}</p></div></div>{% else %}<div class="col-12"><div class="empty-state">Verified certification details will appear here when provided.</div></div>{% endfor %}</div></section>
+{% endblock %}

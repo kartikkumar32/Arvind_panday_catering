@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Branches | Arvind Panday Catering{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">OUR LOCATIONS</span><h1>Branches</h1><p>Find a location and get in touch about your event.</p></div></section>
+<section class="container section-pad"><div class="row g-4">{% for branch in branches %}<div class="col-md-6 col-lg-4"><div class="branch-card h-100"><i class="fa-solid fa-location-dot"></i><h3>{{ branch.name }}</h3><p>{{ branch.address }}</p><p>{{ branch.city }}</p><p>{{ branch.phone }}</p><p>{{ branch.hours }}</p>{% if branch.map_url %}<a class="text-link" href="{{ branch.map_url }}" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></a>{% endif %}</div></div>{% else %}<div class="col-12"><div class="empty-state">Branch details will be added after locations are confirmed.</div></div>{% endfor %}</div></section>
+{% endblock %}

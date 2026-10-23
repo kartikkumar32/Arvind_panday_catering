@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Our Team | Arvind Panday Catering{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">THE PEOPLE BEHIND THE SERVICE</span><h1>Meet the Team</h1><p>Profiles will be added with the business's approval.</p></div></section>
+<section class="container section-pad"><div class="row g-4">{% for member in team %}<div class="col-sm-6 col-lg-4"><div class="team-card h-100"><div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div><h3>{{ member.name }}</h3><div class="team-role">{{ member.designation }}</div><p>{{ member.bio }}</p></div></div>{% else %}<div class="col-12"><div class="empty-state">Team profiles will be published when confirmed.</div></div>{% endfor %}</div></section>
+{% endblock %}

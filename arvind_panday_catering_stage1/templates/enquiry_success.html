@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Enquiry Received | Arvind Panday Catering{% endblock %}
+{% block content %}
+<section class="container section-pad text-center"><div class="success-icon"><i class="fa-solid fa-check"></i></div><span class="eyebrow">THANK YOU</span><h1>Your enquiry has been received.</h1><p>Please save your reference number for future communication.</p><div class="reference-box">{{ reference }}</div><p class="text-muted">This is an enquiry acknowledgement, not a confirmed booking.</p><a class="btn btn-gold mt-3" href="{{ url_for('home') }}">Return Home</a></section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Overview{% endblock %}{% block heading %}Overview{% endblock %}
+{% block content %}
+<div class="stat-grid">
+<div class="stat-card"><span>Total enquiries</span><strong>{{ counts.enquiries }}</strong><i class="fa-solid fa-inbox"></i></div>
+<div class="stat-card"><span>New enquiries</span><strong>{{ counts.new_enquiries }}</strong><i class="fa-solid fa-bell"></i></div>
+<div class="stat-card"><span>Services</span><strong>{{ counts.services }}</strong><i class="fa-solid fa-utensils"></i></div>
+<div class="stat-card"><span>Branches</span><strong>{{ counts.branches }}</strong><i class="fa-solid fa-location-dot"></i></div>
+<div class="stat-card"><span>Team members</span><strong>{{ counts.team }}</strong><i class="fa-solid fa-users"></i></div>
+<div class="stat-card"><span>Certifications</span><strong>{{ counts.certifications }}</strong><i class="fa-solid fa-file-shield"></i></div>
+</div>
+<div class="admin-panel mt-4"><div class="panel-heading"><div><h2>Recent enquiries</h2><p>Latest customer requests received by the website.</p></div><a class="btn btn-gold" href="{{ url_for('admin_enquiries') }}">View all</a></div><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Reference</th><th>Customer</th><th>Event</th><th>Date received</th><th>Status</th><th></th></tr></thead><tbody>{% for item in recent %}<tr><td class="ref-text">{{ item.reference }}</td><td>{{ item.name }}<small>{{ item.phone }}</small></td><td>{{ item.event_type }}</td><td>{{ item.created_at.strftime('%d %b %Y') }}</td><td><span class="status-pill">{{ item.status }}</span></td><td><a class="table-link" href="{{ url_for('admin_enquiry_detail', enquiry_id=item.id) }}">Open</a></td></tr>{% else %}<tr><td colspan="6" class="text-center py-4 text-muted">No enquiries have been received yet.</td></tr>{% endfor %}</tbody></table></div></div>
+<div class="admin-panel mt-4"><h2>Quick actions</h2><div class="quick-links"><a href="{{ url_for('manage_catalog', catalog='services') }}"><i class="fa-solid fa-utensils"></i> Manage services</a><a href="{{ url_for('manage_catalog', catalog='branches') }}"><i class="fa-solid fa-location-dot"></i> Manage branches</a><a href="{{ url_for('manage_catalog', catalog='team') }}"><i class="fa-solid fa-users"></i> Manage team</a><a href="{{ url_for('admin_settings') }}"><i class="fa-solid fa-gear"></i> Update contact details</a></div></div>
+{% endblock %}

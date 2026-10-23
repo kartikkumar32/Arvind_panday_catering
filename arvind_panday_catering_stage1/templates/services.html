@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Services | Arvind Panday Catering{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">WHAT WE DO</span><h1>Catering Services</h1><p>Flexible catering options for different occasions and guest needs.</p></div></section>
+<section class="container section-pad"><div class="row g-4">{% for item in services %}<div class="col-md-6 col-lg-4"><article class="service-card h-100"><div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div><h3>{{ item.title }}</h3><p>{{ item.description }}</p><a class="btn btn-outline-maroon mt-2" href="{{ url_for('contact') }}">Request a Quote</a></article></div>{% else %}<div class="col-12"><div class="empty-state">Services will be listed here soon.</div></div>{% endfor %}</div></section>
+{% endblock %}
